@@ -6,6 +6,8 @@
 - **QRCode**
 	一个MFC项目，通过引用上面LibQRCode项目生成的lib来生成二维码。为了方便使用已经已经将生成好的lib已经包含在debug文件夹LibQRCode.lib文件即使，因此此项目在使用过程中并不依赖第一个项目，第一个项目供研究实现原理使用。
 测试程序截图如下：
+
+
 ![](http://i.imgur.com/F9nZxLP.png)
 
 
@@ -17,8 +19,9 @@
 - 首先需要添加头文件[qrencode.h](https://github.com/elicec/MFCQRcode/blob/master/QRCode/QRCode/src/qrencode.h)
 - 然后即可调用到lib中C语言实现的encode方法
 - example
-	    QRcode*	pQRC = QRcode_encodeString(szSourceString, 0, QR_ECLEVEL_L, QR_MODE_8, 1)
-
+```cpp
+QRcode*	pQRC = QRcode_encodeString(szSourceString, 0, QR_ECLEVEL_L, QR_MODE_8, 1)
+```
 参数中定义了
 - 需要编码的字符串*szSourceString*
 - QRcode的版本version 0
