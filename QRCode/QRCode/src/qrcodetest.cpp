@@ -1,0 +1,205 @@
+//	---------------------------------------------------------------------------
+//		
+//		QRGenerator
+//
+//		Create:			15/05/2013
+//		Last update:	15/05/2013
+//
+//		Author:	TWOTM
+//
+//
+//		Note:
+//
+//		/o ULTRAMUNDUM FOUNDATION - all rights reserved
+//	---------------------------------------------------------------------------
+
+
+//	-------------------------------------------------------
+//	Includes
+//	-------------------------------------------------------
+
+#include "stdafx.h"
+#include <string.h>
+#include <errno.h>
+#include <conio.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <wchar.h>
+#pragma commet(lib,"D:\\githubcode\\qrCode-2-master\\QRGenerator\\Debug\\mlibqrcode.lib")
+#include "qrencode.h"
+//	-------------------------------------------------------
+
+
+//	-------------------------------------------------------
+//	DEFines
+//	-------------------------------------------------------
+
+#define QRCODE_TEXT "中文汉字abc123()_+"
+//#define QRCODE_TEXT					"http://www.ultramundum.org/index.htm";		// Text to encode into QRCode
+#define OUT_FILE					"d:/test.bmp"								// Output file name
+#define OUT_FILE_PIXEL_PRESCALER	4											// Prescaler (number of pixels in bmp file for each QRCode pixel, on each dimension)
+
+#define PIXEL_COLOR_R				0xff										// Color of bmp pixels
+#define PIXEL_COLOR_G				0
+#define PIXEL_COLOR_B				0
+
+	// BMP defines
+
+typedef unsigned short	WORD;
+typedef unsigned long	DWORD;
+typedef signed long		LONG;
+
+#define BI_RGB			0L
+
+#pragma pack(push, 2)
+
+//typedef struct  
+//	{
+//	WORD    bfType;
+//	DWORD   bfSize;
+//	WORD    bfReserved1;
+//	WORD    bfReserved2;
+//	DWORD   bfOffBits;
+//	} BITMAPFILEHEADER;
+//
+//typedef struct 
+//	{
+//	DWORD      biSize;
+//	LONG       biWidth;
+//	LONG       biHeight;
+//	WORD       biPlanes;
+//	WORD       biBitCount;
+//	DWORD      biCompression;
+//	DWORD      biSizeImage;
+//	LONG       biXPelsPerMeter;
+//	LONG       biYPelsPerMeter;
+//	DWORD      biClrUsed;
+//	DWORD      biClrImportant;
+//	} BITMAPINFOHEADER;
+
+#pragma pack(pop)
+//	-------------------------------------------------------
+
+
+//	-------------------------------------------------------
+//	Main
+//	-------------------------------------------------------
+
+int mainrun(const char* data)
+{
+	//unsigned char baTestData[] = {0xe4,0xb8,0xad,0xe6,0x96,0x87,0x00};
+char*			szSourceSring = (char*)data;
+unsigned int	unWidth, x, y, l, n, unWidthAdjusted, unDataBytes;
+unsigned char*	pRGBData, *pSourceData, *pDestData;
+QRcode*			pQRC;
+FILE*			f;
+
+		// Compute QRCode
+
+	if (pQRC = QRcode_encodeString(szSourceSring, 0, QR_ECLEVEL_L, QR_MODE_8, 1))
+	//if(pQRC=QRcode_encodeString8bit(szSourceSring,0,QR_ECLEVEL_L))
+		{
+		unWidth = pQRC->width;
+		unWidthAdjusted = unWidth * OUT_FILE_PIXEL_PRESCALER * 3;
+		if (unWidthAdjusted % 4)
+			unWidthAdjusted = (unWidthAdjusted / 4 + 1) * 4;
+		unDataBytes = unWidthAdjusted * unWidth * OUT_FILE_PIXEL_PRESCALER;
+
+			// Allocate pixels buffer
+
+		if (!(pRGBData = (unsigned char*)malloc(unDataBytes)))
+			{
+			printf("Out of memory");
+			exit(-1);
+			}
+			
+			// Preset to white
+
+		memset(pRGBData, 0xff, unDataBytes);
+
+
+			// Prepare bmp headers
+
+		BITMAPFILEHEADER kFileHeader;
+		kFileHeader.bfType = 0x4d42;  // "BM"
+		kFileHeader.bfSize =	sizeof(BITMAPFILEHEADER) +
+								sizeof(BITMAPINFOHEADER) +
+								unDataBytes;
+		kFileHeader.bfReserved1 = 0;
+		kFileHeader.bfReserved2 = 0;
+		kFileHeader.bfOffBits =	sizeof(BITMAPFILEHEADER) +
+								sizeof(BITMAPINFOHEADER);
+
+		BITMAPINFOHEADER kInfoHeader;
+		kInfoHeader.biSize = sizeof(BITMAPINFOHEADER);
+		kInfoHeader.biWidth = unWidth * OUT_FILE_PIXEL_PRESCALER;
+		kInfoHeader.biHeight = -((int)unWidth * OUT_FILE_PIXEL_PRESCALER);
+		kInfoHeader.biPlanes = 1;
+		kInfoHeader.biBitCount = 24;
+		kInfoHeader.biCompression = BI_RGB;
+		kInfoHeader.biSizeImage = 0;
+		kInfoHeader.biXPelsPerMeter = 0;
+		kInfoHeader.biYPelsPerMeter = 0;
+		kInfoHeader.biClrUsed = 0;
+		kInfoHeader.biClrImportant = 0;
+
+
+			// Convert QrCode bits to bmp pixels
+
+		pSourceData = pQRC->data;
+		for(y = 0; y < unWidth; y++)
+			{
+			pDestData = pRGBData + unWidthAdjusted * y * OUT_FILE_PIXEL_PRESCALER;
+			for(x = 0; x < unWidth; x++)
+				{
+				if (*pSourceData & 1)
+					{
+					for(l = 0; l < OUT_FILE_PIXEL_PRESCALER; l++)
+						{
+						for(n = 0; n < OUT_FILE_PIXEL_PRESCALER; n++)
+							{
+							*(pDestData +		n * 3 + unWidthAdjusted * l) =	PIXEL_COLOR_B;
+							*(pDestData + 1 +	n * 3 + unWidthAdjusted * l) =	PIXEL_COLOR_G;
+							*(pDestData + 2 +	n * 3 + unWidthAdjusted * l) =	PIXEL_COLOR_R;
+							}
+						}
+					}
+				pDestData += 3 * OUT_FILE_PIXEL_PRESCALER;
+				pSourceData++;
+				}
+			}
+
+
+			// Output the bmp file
+
+		if (!(fopen_s(&f, OUT_FILE, "wb")))
+			{
+			fwrite(&kFileHeader, sizeof(BITMAPFILEHEADER), 1, f);
+			fwrite(&kInfoHeader, sizeof(BITMAPINFOHEADER), 1, f);
+			fwrite(pRGBData, sizeof(unsigned char), unDataBytes, f);
+			
+			fclose(f);
+			}
+		else
+			{
+			printf("Unable to open file");
+			exit(-1);
+			}
+
+			// Free data
+
+		free(pRGBData);
+		QRcode_free(pQRC);
+		}
+	else
+		{
+		printf("NULL returned");
+		exit(-1);
+		}
+
+	return 0;
+}
+//	-------------------------------------------------------
+

@@ -1,0 +1,29 @@
+﻿生成启动时间为 2015/8/27 9:52:56。
+     1>项目“d:\visual studio 2010\Projects\QRCode\QRCode\QRCode.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\MFCQRCode.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\QRCode.res" QRCode.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"d:\visual studio 2010\Projects\QRCode\Release\MFCQRCode.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\MFCQRCode.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"d:\visual studio 2010\Projects\QRCode\Release\MFCQRCode.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"d:\visual studio 2010\Projects\QRCode\Release\MFCQRCode.lib" /MACHINE:X86 Release\QRCode.res
+         Release\QRCode.obj
+         Release\QRCodeDlg.obj
+         Release\qrcodetest.obj
+         Release\stdafx.obj
+         "d:\visual studio 2010\Projects\QRCode\Release\LibQRCode.lib"
+         正在生成代码
+         已完成代码的生成
+         QRCode.vcxproj -> d:\visual studio 2010\Projects\QRCode\Release\MFCQRCode.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"d:\visual studio 2010\Projects\QRCode\Release\MFCQRCode.exe;#1" /manifest Release\MFCQRCode.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“Release\MFCQRCode.unsuccessfulbuild”。
+         正在对“Release\MFCQRCode.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“d:\visual studio 2010\Projects\QRCode\QRCode\QRCode.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.30

@@ -1,0 +1,34 @@
+﻿生成启动时间为 2015/8/27 10:17:50。
+     1>项目“d:\visual studio 2010\Projects\QRCode\QRCode\QRCode.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\MFCQRCode.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\MFCQRCode.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt QRCodeDlg.cpp
+         QRCodeDlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"d:\visual studio 2010\Projects\QRCode\Debug\MFCQRCode.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\MFCQRCode.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"d:\visual studio 2010\Projects\QRCode\Debug\MFCQRCode.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"d:\visual studio 2010\Projects\QRCode\Debug\MFCQRCode.lib" /MACHINE:X86 Debug\QRCode.res
+         Debug\MFCQRCode.exe.embed.manifest.res
+         Debug\QRCode.obj
+         Debug\QRCodeDlg.obj
+         Debug\qrcodetest.obj
+         Debug\stdafx.obj
+         "d:\visual studio 2010\Projects\QRCode\Debug\LibQRCode.lib"
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\MFCQRCode.exe.embed.manifest" /manifest Debug\MFCQRCode.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         QRCode.vcxproj -> d:\visual studio 2010\Projects\QRCode\Debug\MFCQRCode.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\MFCQRCode.unsuccessfulbuild”。
+         正在对“Debug\MFCQRCode.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“d:\visual studio 2010\Projects\QRCode\QRCode\QRCode.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:06.84

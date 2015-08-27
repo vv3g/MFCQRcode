@@ -1,0 +1,36 @@
+﻿生成启动时间为 2015/8/27 9:25:35。
+     1>项目“d:\visual studio 2010\Projects\QRCode\LibQRCode\LibQRCode.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Release\LibQRCode.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D HAVE_CONFIG_H /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt src\bitstream.c src\mask.c src\mmask.c src\mqrspec.c src\qrencode.c src\qrinput.c src\qrspec.c src\rsecc.c src\split.c
+         bitstream.c
+         mask.c
+         mmask.c
+         mqrspec.c
+         qrencode.c
+         qrinput.c
+         qrspec.c
+         rsecc.c
+         split.c
+     1>src\split.c(287): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(238) : 参见“strdup”的声明
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"d:\visual studio 2010\Projects\QRCode\Release\LibQRCode.lib" /NOLOGO /LTCG Release\bitstream.obj
+         Release\mask.obj
+         Release\mmask.obj
+         Release\mqrspec.obj
+         Release\qrencode.obj
+         Release\qrinput.obj
+         Release\qrspec.obj
+         Release\rsecc.obj
+         Release\split.obj
+         LibQRCode.vcxproj -> d:\visual studio 2010\Projects\QRCode\Release\LibQRCode.lib
+       FinalizeBuildStatus:
+         正在删除文件“Release\LibQRCode.unsuccessfulbuild”。
+         正在对“Release\LibQRCode.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“d:\visual studio 2010\Projects\QRCode\LibQRCode\LibQRCode.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.13
