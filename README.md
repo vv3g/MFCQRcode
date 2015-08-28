@@ -10,8 +10,11 @@
 	一个MFC项目，通过引用上面LibQRCode项目生成的lib来生成二维码。为了方便使用已经已经将生成好的lib已经包含在debug文件夹LibQRCode.lib文件即使，因此此项目在使用过程中并不依赖第一个项目，第一个项目供研究实现原理使用。
 测试程序截图如下：
 
-
+vs2010 MFC程序
 ![](http://i.imgur.com/F9nZxLP.png)
+
+JAVA Swing程序
+![](http://i.imgur.com/MqU8Ubf.png)
 
 
 ## 使用 ##
