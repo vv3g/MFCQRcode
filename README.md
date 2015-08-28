@@ -1,6 +1,6 @@
 # MFCQRcode #
-changlog
-2015/8/28 1645 
+**changlog**
+*2015/8/28 16:24:45 *
 添加JAVA Swing界面生成QRCode
 ## 简介 ##
   一个生成QRcode二维码的MFC项目。核心生成二维码采用C语言实现，开发环境vs2010，解决方案中包括以下两个项目。
